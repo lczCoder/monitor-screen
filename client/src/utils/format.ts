@@ -2,7 +2,3 @@
 export function trim(str: string) {
   return str.trim();
 }
-
-export function test(){
-  return 'test'
-}
