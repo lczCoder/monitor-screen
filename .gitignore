@@ -29,6 +29,8 @@ _cgo_export.*
 
 # 临时文件 #
 ######################
+/serve/tmp
+serve/tmp
 tmp/
 .tmp/
 
