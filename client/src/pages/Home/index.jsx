@@ -1,5 +1,4 @@
 import { connect } from 'dva'
-
 // 首页
 const Home = (props) => {
   const { msg } = props
