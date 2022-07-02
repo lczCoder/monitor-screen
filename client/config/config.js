@@ -11,6 +11,10 @@ export default defineConfig({
     exclude: [],
   },
   hash: true,
+  antd: {
+    dark: true,
+    compact: true,
+  },
   dynamicImport: false, // 按需加载，上线前需分包
   targets: {
     ie: 10,
