@@ -1,12 +1,12 @@
 package models
 
 
-type Userinfo struct {
+type User struct {
 	Username string
 	Age int
 }
 
 // 修改表名 userinfos -> userinfo
-func (Userinfo) TableName() string{
-	return "userinfo"
+func (User) TableName() string{
+	return "user"
 }
