@@ -7,6 +7,7 @@ import (
 
 func main() {
 	r := gin.Default()
+	//r.SetTrustedProxies([]string{"192.168.1.2"}) // 设置代理
 	// SDK上报事件处理接口
 	routes.SdkRoutersInit(r)
 	// 监控平台接口组入口
