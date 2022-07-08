@@ -1,4 +1,4 @@
-package models
+package database
 
 import (
 	"fmt"
@@ -7,13 +7,13 @@ import (
 )
 var DB *gorm.DB
 
-var err error
+var ErrDB error
 
 func init(){
 	dsn:="root:lxl520..@tcp(127.0.0.1:3306)/monito?charset=utf8mb4&parseTime=True&loc=Local"
-	DB,err= gorm.Open(mysql.Open(dsn),&gorm.Config{})
-	if err != nil{
-		fmt.Println(err)
+	DB, ErrDB = gorm.Open(mysql.Open(dsn),&gorm.Config{})
+	if ErrDB != nil{
+		fmt.Println(ErrDB)
 	}else{
 		fmt.Println("mysql数据库连接成功")
 	}
