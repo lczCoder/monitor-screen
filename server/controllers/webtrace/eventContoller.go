@@ -15,6 +15,20 @@ type SourceField struct {
 
 func GetParseEvent(ctx *gin.Context) {
 	fmt.Println("sdk事件上报处理,get请求")
+	//var source models.SourceField
+	//if err:= ctx.ShouldBind(&source); err==nil{
+	//	var data []models.SdkParams
+	//	json.Unmarshal([]byte(source.Opt), &data)
+	//	//fmt.Println("解析json",data)
+	//	for i,v:= range data{
+	//		fmt.Println("循环",i,v)
+	//		sql:=&database.Performance{
+	//			Type: "123",
+	//		}
+	//		result := database.DB.Create(&sql)
+	//		fmt.Println("GET_sql插入结果", result)
+	//	}
+	//}
 }
 
 func PostParseEvent(ctx *gin.Context) {

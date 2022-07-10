@@ -19,6 +19,11 @@ type SdkParams struct {
 			Type     string `json:"type"`
 			File     string `json:"file"`
 			TimeCost string `json:"time_cost"`
+			Frt string `json:"frt"`
+			Rrt string `json:"rrt"`
+			Dpt string `json:"dpt"`
+			Rlt string `json:"rlt"`
+			Fit string `json:"fit"`
 		} `json:"info"`
 	} `json:"eventInfo"`
 }
