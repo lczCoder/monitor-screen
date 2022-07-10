@@ -31,39 +31,48 @@ func ParsePostForm(params models.SourceField) {
 		if _event == "performance" {
 			dealPerformance(v)
 		}
+		if _event == "page" {
+			dealUvPv(v)
+		}
 	}
 }
 
 // 处理 performance类型
-
 func dealPerformance(opt models.SdkParams) {
-	fmt.Println("opt", opt.EventInfo.Info.Type)
-	if "navigation" == opt.EventInfo.Info.Type {
-		sql := &database.Performance{
-			Type:    opt.EventInfo.Info.Type,
-			Frt:     opt.EventInfo.Info.Frt,
-			Rrt:     opt.EventInfo.Info.Rrt,
-			Dpt:     opt.EventInfo.Info.Dpt,
-			Fit:     opt.EventInfo.Info.Fit,
-			Rlt:     opt.EventInfo.Info.Rlt,
-			URL:     opt.EventInfo.URL,
-			Belong:  opt.Appid,
-			UUID:    opt.UUID,
-			Version: opt.Version,
-		}
+	fmt.Println("资源统计",opt )
+	var _info = opt.EventInfo.Info
+	var sql = &database.Performance{}
+	sql.Type = _info.Type
+	sql.URL = opt.EventInfo.URL
+	sql.Belong = opt.Appid
+	sql.UUID = opt.UUID
+	sql.Version = opt.Version
+	if "navigation" == _info.Type {
+		sql.Frt = _info.Frt
+		sql.Rrt = _info.Rrt
+		sql.Dpt = _info.Dpt
+		sql.Fit = _info.Fit
+		sql.Rlt = _info.Rlt
 		result := database.DB.Create(&sql)
-		fmt.Println("GET_sql插入结果", result)
+		fmt.Println("首破加载插入结果", result)
 	} else {
-		sql := &database.Performance{
-			Type:    opt.EventInfo.Info.Type,
-			File:    opt.EventInfo.Info.File,
-			Time:    opt.EventInfo.Info.TimeCost,
-			URL:     opt.EventInfo.URL,
-			Belong:  opt.Appid,
-			UUID:    opt.UUID,
-			Version: opt.Version,
-		}
+		sql.File = _info.File
+		sql.Time = _info.TimeCost
 		result := database.DB.Create(&sql)
-		fmt.Println("GET_sql插入结果2", result)
+		fmt.Println("资源加载插入结果", result)
 	}
+}
+
+// 处理网页pv | uv 数据统计
+func dealUvPv (opt models.SdkParams){
+	fmt.Println("uv统计",opt)
+	var _info = opt.EventInfo.Info
+	sql:= &database.URLPv{
+		Type: _info.Type,
+		URL: _info.Url,
+		Belong: opt.Appid,
+		UUID: opt.UUID,
+	}
+	result := database.DB.Create(&sql)
+	fmt.Println("upv插入结果", result)
 }

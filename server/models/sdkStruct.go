@@ -24,6 +24,7 @@ type SdkParams struct {
 			Dpt string `json:"dpt"`
 			Rlt string `json:"rlt"`
 			Fit string `json:"fit"`
+			Url string `json:"url"`
 		} `json:"info"`
 	} `json:"eventInfo"`
 }
