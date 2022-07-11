@@ -1,47 +1,44 @@
 {
+  "name": "client",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "dev": "umi dev",
-    "build": "umi build",
-    "postinstall": "umi generate tmp",
-    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "plop": "plop"
   },
   "dependencies": {
-    "@ant-design/pro-layout": "^6.5.0",
-    "babel-plugin-import": "^1.13.5",
-    "lodash": "^4.17.21",
-    "react": "17.x",
-    "react-dom": "17.x",
-    "vite-plugin-imp": "^2.2.0",
-    "webpack-cli": "^4.10.0",
-    "wired-elements": "^3.0.0-rc.6"
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@douyinfe/semi-ui": "^2.14.0",
+    "@loadable/component": "^5.15.2",
+    "@types/react-router-dom": "^5.3.3",
+    "autoprefixer": "^10.4.7",
+    "axios": "^0.27.2",
+    "chart.js": "^3.8.0",
+    "faker": "^5.5.3",
+    "less": "^4.1.3",
+    "mobx": "^6.6.1",
+    "mobx-react": "^7.5.1",
+    "mobx-react-lite": "^3.4.0",
+    "path": "^0.12.7",
+    "postcss-import": "^14.1.0",
+    "postcss-nested": "^5.0.6",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^4.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "tailwindcss": "^3.1.5",
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "umi": "^3.5.26",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^17.0.0",
-    "@umijs/preset-react": "1.x",
-    "@umijs/test": "^3.5.26",
-    "babel-plugin-react-css-modules": "^5.2.6",
-    "classname": "^0.0.0",
-    "less-vars-to-js": "^1.3.0",
-    "lint-staged": "^10.0.7",
-    "postcss-less": "^6.0.0",
-    "prettier": "^2.2.0",
-    "typescript": "^4.1.2",
-    "yorkie": "^2.0.0"
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "cross-env": "^7.0.3",
+    "plop": "^3.1.1",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.9"
   }
 }
