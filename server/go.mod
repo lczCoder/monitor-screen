@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/denisenkom/go-mssqldb v0.12.2 // indirect
 	github.com/gin-gonic/gin v1.8.1
+	github.com/go-basic/uuid v1.0.0
 	github.com/goinggo/mapstructure v0.0.0-20140717182941-194205d9b4a9
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/gookit/color v1.5.1 // indirect

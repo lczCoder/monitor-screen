@@ -2,16 +2,16 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
+	"monitor/controllers/montioControllers"
 )
 
+const v = "v1"
+
+// 用户信息类接口处理
 func MonitoRouterInit (r *gin.Engine){
-	monito := r.Group("/monito")
+	monito := r.Group("/monito/user")
 	{
-		monito.POST("/", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK,gin.H{
-				"msg":"ok",
-			})
-		})
+		monito.POST("/login", montioControllers.LoginUser)
+		monito.POST("/register", montioControllers.RegisterUser)
 	}
 }
