@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// 生成N 位随机数
+// 生成N位随机数
 func RandMathNum(max int) (str string) {
 	for i := 0; i < max; i++ {
 		rand.Seed(time.Now().UnixNano())
@@ -19,6 +19,7 @@ func RandMathNum(max int) (str string) {
 	return
 }
 
+// 邮箱验证码发送
 func SendEmail(emails []string) (result bool, code string) {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 	code = RandMathNum(4)

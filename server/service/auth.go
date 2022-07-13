@@ -24,7 +24,7 @@ func UserRegistService(res models.UserRegisterStruct) (_response models.Response
 	// 没有用户名和邮箱重复 满足注册条件
 	if result.RowsAffected == 0 {
 		var time = utils.GetNowUnixMilliTime() // 注册时间
-		var uuid = utils.CreateUserId() // 用户id生成
+		var uuid = utils.CreateUserId()        // 用户id生成
 		// userid查重 保障userid的唯一性
 		var status int64 = 1
 		for {
@@ -34,9 +34,10 @@ func UserRegistService(res models.UserRegisterStruct) (_response models.Response
 			r := database.DB.Where(&database.User{UserID: uuid}).Find(&user)
 			status = r.RowsAffected
 		}
+		prvitePwd,_ := utils.HashSaltStr(res.PassWord)
 		sql := &database.User{
 			Name:     res.UserName,
-			Password: res.PassWord,
+			Password: prvitePwd ,
 			NickName: res.NickName,
 			Email:    res.Email,
 			CTime:    time,
@@ -122,7 +123,7 @@ func EmailSendService(res models.UserEmailStruct) (_response models.ResponseData
 				StatusCode: 0,
 				Msg:        "验证码发送成功",
 			}
-		} else {  // 失败
+		} else { // 失败
 			_response = models.ResponseData{
 				StatusCode: 102,
 				Msg:        models.ErrorCodeMsg[102],
@@ -133,6 +134,57 @@ func EmailSendService(res models.UserEmailStruct) (_response models.ResponseData
 		_response = models.ResponseData{
 			StatusCode: 109,
 			Msg:        models.ErrorCodeMsg[109],
+		}
+	}
+	return
+}
+
+// 激活码校验
+func EmailBindService(res models.UserBindEmailStruct) (_response models.ResponseData) {
+	log.Println("激活码接收", res.Email, res.Code)
+	n, err := database.RDB.Exists(database.RdbCtx, res.Email).Result()
+	if err != nil {
+		panic(err)
+	}
+	// 缓存到期已被清除了
+	if n == 0 {
+		_response = models.ResponseData{
+			StatusCode: 111,
+			Msg:        models.ErrorCodeMsg[111],
+		}
+		return
+	}
+	// 获取激活码校验是否匹配
+	v, error := database.RDB.Get(database.RdbCtx, res.Email).Result()
+	if error != nil {
+		panic(err)
+	}
+	// 匹配成功
+	if v == res.Code {
+		//	 修改账号状态，删除redis key -> 激活成功
+		_, err := database.RDB.Del(database.RdbCtx, res.Email).Result()
+		if err != nil {
+			panic(err)
+		}
+		updataErr := database.DB.Model(&database.User{}).Where("email = ?", "lczcoder@163.com").UpdateColumn("status", 1).Error
+		if updataErr != nil {
+			//	激活失败
+			_response = models.ResponseData{
+				StatusCode: 113,
+				Msg:        models.ErrorCodeMsg[113],
+			}
+		} else {
+			// 激活成功
+			_response = models.ResponseData{
+				StatusCode: 0,
+				Msg:        "账号激活成功!",
+			}
+		}
+		return
+	} else {
+		_response = models.ResponseData{
+			StatusCode: 112,
+			Msg:        models.ErrorCodeMsg[112],
 		}
 	}
 	return

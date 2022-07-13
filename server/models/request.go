@@ -17,3 +17,9 @@ type UserRegisterStruct struct {
 type UserEmailStruct struct {
 	Email string `json:"email" form:"email" must:"true"`
 }
+
+// 邮箱激活
+type UserBindEmailStruct struct {
+	UserEmailStruct
+	Code string `json:"code" form:"code" must:"true"`
+}
