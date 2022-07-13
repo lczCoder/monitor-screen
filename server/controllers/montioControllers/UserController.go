@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"monitor/models"
 	"monitor/service"
+	"monitor/utils"
 	"net/http"
 )
 
@@ -32,7 +33,14 @@ func RegisterUser(ctx *gin.Context) {
 			Msg: models.ErrorCodeMsg[101],
 		})
 	}else{
-		response := service.UserRegistService(userinfo)
-		ctx.JSON(http.StatusOK,&response)
+		if status :=utils.CheckNilStuct(userinfo);status {
+			response := service.UserRegistService(userinfo)
+			ctx.JSON(http.StatusOK,&response)
+			return
+		}
+		ctx.JSON(http.StatusOK,&models.ResponseData{
+			StatusCode: 107,
+			Msg: models.ErrorCodeMsg[107],
+		})
 	}
 }

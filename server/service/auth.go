@@ -16,7 +16,7 @@ func UserLoginService(res models.UserLoginStruct) {
 
 // 注册
 func UserRegistService(res models.UserRegisterStruct) (_response models.ResponseData) {
-	fmt.Println("注册数据", res)
+	fmt.Println("注册数据", res, res.Email=="",res.PassWord=="")
 	var user database.User // 用户数据表模型
 	result := database.DB.Where(&database.User{Name: res.UserName}).Or(&database.User{Email: res.Email}).Find(&user).Limit(1)
 	// 没有用户名和邮箱重复 满足注册条件
