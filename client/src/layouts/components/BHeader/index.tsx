@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Nav, Avatar, Dropdown } from '@douyinfe/semi-ui';
 import { IconStar, IconUser, IconUserGroup, IconSetting, IconEdit } from '@douyinfe/semi-icons';
-import './index.css';
+import './index.module.less';
 
 const BHeader = () => {
   const items = [
@@ -28,7 +28,7 @@ const BHeader = () => {
     },
   ];
   return (
-    <Layout.Header className="base-header">
+    // <Layout.Header className="base-header">
       <div style={{ width: '100%' }}>
         <Nav
           mode={'horizontal'}
@@ -59,7 +59,7 @@ const BHeader = () => {
           }
         />
       </div>
-    </Layout.Header>
+    // </Layout.Header>
   );
 };
 

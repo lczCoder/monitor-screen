@@ -1,12 +1,13 @@
 import React from 'react'
 import { Layout } from '@douyinfe/semi-ui'
-import './index.css'
+import './index.module.less';
 
 const BFooter = () => {
 	return (
-		<Layout.Footer className='base-footer'>
-			FOOTER
-		</Layout.Footer>
+		<></>
+		// <Layout.Footer className='base-footer'>
+		// 	FOOTER
+		// </Layout.Footer>
 	)
 }
 

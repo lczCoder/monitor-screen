@@ -1,30 +1,19 @@
-import React from 'react';
-import { Layout } from '@douyinfe/semi-ui';
+import React from 'react'
+import { Layout } from '@douyinfe/semi-ui'
+import BHeader from './components/BHeader'
+import BFooter from './components/BFooter'
 import { Outlet } from 'react-router-dom';
-import BHeader from './components/BHeader';
-import BFooter from './components/BFooter';
-import RouterBeforeEach from '../routes/RouterBeforeEach';
-import './index.module.css';
+import './index.module.less'
 
-const BaseLayout = () => {
+const BaseLayout = (props: any) => {
   return (
     <Layout className="baseLayout">
       <BHeader />
-      <Layout.Content
-        className="site-layout-background"
-        style={{
-          margin: '24px 16px',
-          padding: 24,
-          minHeight: 280,
-        }}
-      >
-        <Outlet />
-        <RouterBeforeEach />
-      </Layout.Content>
-
+      divdiv
+      <Outlet/>
       <BFooter />
     </Layout>
-  );
-};
+  )
+}
 
-export default React.memo(BaseLayout);
+export default React.memo(BaseLayout)

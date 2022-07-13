@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
-import { To, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Redirect(props: { to: To }) {
-  let navigate = useNavigate();
-  useEffect(() => navigate('login'));
-  return null;
+export default function Redirect() {
+  let navigate = useNavigate()
+  useEffect(() => navigate('/index/home'))
+  return null
 }
-
-export default Redirect;
