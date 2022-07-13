@@ -13,5 +13,7 @@ func MonitoRouterInit (r *gin.Engine){
 	{
 		monito.POST("/login", montioControllers.LoginUser)
 		monito.POST("/register", montioControllers.RegisterUser)
+		monito.POST("/emailSend",montioControllers.EmailSendUser)
+		monito.POST("/emailBind",montioControllers.EmailBindUser)
 	}
 }

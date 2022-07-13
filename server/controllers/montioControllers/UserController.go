@@ -16,7 +16,7 @@ func LoginUser(ctx *gin.Context) {
 	if err := ctx.ShouldBind(&userinfo); err != nil {
 		ctx.JSON(http.StatusOK, &models.ResponseData{
 			StatusCode: 101,
-			Msg: models.ErrorCodeMsg[101],
+			Msg:        models.ErrorCodeMsg[101],
 		})
 	} else {
 		service.UserLoginService(userinfo)
@@ -30,17 +30,36 @@ func RegisterUser(ctx *gin.Context) {
 	if err := ctx.ShouldBind(&userinfo); err != nil {
 		ctx.JSON(http.StatusOK, &models.ResponseData{
 			StatusCode: 101,
-			Msg: models.ErrorCodeMsg[101],
+			Msg:        models.ErrorCodeMsg[101],
 		})
-	}else{
-		if status :=utils.CheckNilStuct(userinfo);status {
+	} else {
+		if status := utils.CheckNilStuct(userinfo); status {
 			response := service.UserRegistService(userinfo)
-			ctx.JSON(http.StatusOK,&response)
+			ctx.JSON(http.StatusOK, &response)
 			return
 		}
-		ctx.JSON(http.StatusOK,&models.ResponseData{
+		ctx.JSON(http.StatusOK, &models.ResponseData{
 			StatusCode: 107,
-			Msg: models.ErrorCodeMsg[107],
+			Msg:        models.ErrorCodeMsg[107],
 		})
 	}
+}
+
+// 邮箱验证码发送
+func EmailSendUser(ctx *gin.Context) {
+	fmt.Println("邮箱验证码发送")
+	var emailInfo models.UserEmailStruct
+	if err := ctx.ShouldBind(&emailInfo); err != nil {
+		models.ErrorResponse(ctx,101)
+	} else {
+		response := service.EmailSendService(emailInfo)
+		fmt.Println("response",response)
+		ctx.JSON(http.StatusOK, &response)
+	}
+}
+
+// 邮箱验证码绑定用户账号
+func EmailBindUser(ctx *gin.Context) {
+	fmt.Println("邮箱验证码绑定")
+
 }

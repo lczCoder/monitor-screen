@@ -5,7 +5,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"monitor/models"
 	"monitor/service"
-	"monitor/utils"
 	"net/http"
 )
 
@@ -16,8 +15,6 @@ type SourceField struct {
 
 func GetParseEvent(ctx *gin.Context) {
 	fmt.Println("sdk事件上报处理,get请求")
-	result:=utils.SendEmail()
-	fmt.Println("邮箱发送结果：",result)
 }
 
 func PostParseEvent(ctx *gin.Context) {

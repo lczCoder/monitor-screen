@@ -10,6 +10,10 @@ type UserLoginStruct struct {
 type UserRegisterStruct struct {
 	UserName string `json:"username" form:"username" must:"true"`
 	PassWord string `json:"password" form:"password" must:"true"`
-	Email string `json:"email" form:"email" must:"true"`
 	NickName string `json:"nickname" form:"nickname" must:"true"`
+	UserEmailStruct
+}
+// 邮箱发送
+type UserEmailStruct struct {
+	Email string `json:"email" form:"email" must:"true"`
 }
