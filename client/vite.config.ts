@@ -1,45 +1,64 @@
-import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
-import postcssImport from 'postcss-import';
-// import tailwindcss from 'tailwindcss';
-import {resolve} from 'path'
-// const path = require('path');
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+const path = require('path')
+import viteCompression from 'vite-plugin-compression'
+
 // https://vitejs.dev/config/
-
-const pathResolve = (dir: string): any => {  
-  return resolve(__dirname, ".", dir)          
-}
-
 export default defineConfig({
-  plugins: [reactRefresh()],
+  base: '/',
+  plugins: [
+    react(),
+    viteCompression({
+      verbose: true,
+      disable: false,
+      threshold: 10240,
+      algorithm: 'gzip',
+      ext: '.gz',
+    }),
+  ],
   css: {
-    modules: {
-      generateScopedName: '[name]__[local]___[hash:base64:5]',
-    },
-    postcss: {
-      plugins: [
-        postcssImport,
-        require('autoprefixer'),
-        require('postcss-nested'),
-      ],
-    },
     preprocessorOptions: {
       less: {
-        // 支持内联 JavaScript
         javascriptEnabled: true,
+        modifyVars: { '@primary-color': 'red' },
       },
     },
   },
   resolve: {
     alias: {
-      '@': pathResolve('src'),
-      '@@': pathResolve('src/components'),
-      '~': pathResolve('src/stores'),
+      '@': path.resolve(__dirname, './src/'),
+      '*': path.resolve(''),
     },
   },
+  /* 代理 */
   server: {
-    hmr: {
-      overlay: false,
+    port: 3000, // 开发环境启动的端口
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ''), // 将 /api 重写为空
+      },
     },
   },
-});
+  build: {
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'static/js/[name]-[hash].js',
+        entryFileNames: 'static/js/[name]-[hash].js',
+        assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          }
+        },
+      },
+    },
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
+})
