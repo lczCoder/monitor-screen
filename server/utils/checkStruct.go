@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"fmt"
+	"log"
 	"reflect"
 )
 
@@ -19,8 +21,10 @@ func StructToMap(obj interface{}) map[string]interface{} {
 func CheckNilStuct(obj interface{}) bool {
 	var status = true
 	res := StructToMap(obj)
+	log.Println("ressss",res)
 	for _, v := range res {
-		if v == "" {
+		fmt.Printf("循环注册,%T,%#v",v,v)
+		if v == ""  {
 			status = false
 		}
 	}

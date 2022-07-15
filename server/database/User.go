@@ -15,3 +15,15 @@ type	User	struct {
 func (m *User) TableName() string {
 	return "user"
 }
+
+
+//ALTER TABLE `monito`.`user`
+//ADD COLUMN `id` int(1) ZEROFILL NOT NULL AUTO_INCREMENT FIRST,
+//MODIFY COLUMN `name` varchar CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL FIRST,
+//MODIFY COLUMN `user_id` varchar CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL AFTER `name`,
+//MODIFY COLUMN `c_time` int NOT NULL AFTER `user_id`,
+//MODIFY COLUMN `password` varchar CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL AFTER `c_time`,
+//MODIFY COLUMN `nick_name` varchar CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL AFTER `password`,
+//MODIFY COLUMN `email` varchar CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL AFTER `nick_name`,
+//MODIFY COLUMN `status` int ZEROFILL NOT NULL AFTER `email`,
+//ADD PRIMARY KEY (`id`);
