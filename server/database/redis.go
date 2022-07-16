@@ -12,8 +12,7 @@ var RdbCtx = context.Background()
 
 func init() {
 	RDB = redis.NewClient(&redis.Options{
-		//Addr:	  "127.0.0.1:6001",
-		Addr:	  "192.168.2.100:6001",
+		Addr:	  "127.0.0.1:6001",
 		Password: "", // no password set
 		DB:		  0,  // use default DB
 	})

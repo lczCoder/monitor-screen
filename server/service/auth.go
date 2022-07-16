@@ -12,8 +12,31 @@ import (
 // 用户相关接口处理
 
 // 登录
-func UserLoginService(res models.UserLoginStruct) {
+func UserLoginService(res models.UserLoginStruct)  models.ResponseData {
 	log.Println("登录数据", res)
+	var user = database.User{}
+	result := database.DB.Where(&database.User{Name: res.UserName}).Find(&user)
+	if result.RowsAffected == 0 {
+		return models.ResponseData{
+			StatusCode: 114,
+			Msg:        models.ErrorCodeMsg[114],
+		}
+	}
+	log.Println("账号匹配正确",user.Password)
+	if check:=utils.DecryptStr(user.Password,res.Password);check{
+		token,_:=utils.CreatToken(user.Name)
+		return models.ResponseData{
+			StatusCode: 0,
+			Msg: "登录成功",
+			Data: map[string]interface{}{
+				"token":token,
+			},
+		}
+	}
+	return models.ResponseData{
+		StatusCode: 115,
+		Msg: models.ErrorCodeMsg[115],
+	}
 }
 
 // 注册
@@ -34,10 +57,10 @@ func UserRegistService(res models.UserRegisterStruct) (_response models.Response
 			r := database.DB.Where(&database.User{UserID: uuid}).Find(&user)
 			status = r.RowsAffected
 		}
-		prvitePwd,_ := utils.HashSaltStr(res.PassWord)
+		prvitePwd, _ := utils.HashSaltStr(res.PassWord)
 		sql := &database.User{
 			Name:     res.UserName,
-			Password: prvitePwd ,
+			Password: prvitePwd,
 			NickName: res.NickName,
 			Email:    res.Email,
 			CTime:    time,

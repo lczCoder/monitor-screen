@@ -16,7 +16,15 @@ func LoginUser(ctx *gin.Context) {
 	if err := ctx.ShouldBind(&userinfo); err != nil {
 		models.ErrorResponse(ctx,101)
 	} else {
-		service.UserLoginService(userinfo)
+		if status := utils.CheckNilStuct(userinfo); status {
+			response := service.UserLoginService(userinfo)
+			ctx.JSON(http.StatusOK, &response)
+			return
+		}
+		ctx.JSON(http.StatusOK, &models.ResponseData{
+			StatusCode: 107,
+			Msg:        models.ErrorCodeMsg[107],
+		})
 	}
 }
 

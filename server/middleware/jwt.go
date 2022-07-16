@@ -21,7 +21,7 @@ func JwtAuth () gin.HandlerFunc{
 			return
 		}
 		//解析token包含的信息
-		claims ,err := utils.ParseToken(token)
+		user ,err := utils.ParseToken(token)
 		if err != nil {
 			ctx.JSON(http.StatusOK, models.ResponseData{
 				StatusCode: 106,
@@ -30,7 +30,7 @@ func JwtAuth () gin.HandlerFunc{
 			ctx.Abort()
 			return
 		}
-		ctx.Set("Token",claims)
+		ctx.Set("Token",user)
 		ctx.Next()
 	}
 }

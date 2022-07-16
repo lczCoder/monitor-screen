@@ -21,7 +21,7 @@ func CreatToken(username string) (string,error) {
 	claims := MyClaims{
 		username, // 自定义字段
 		jwt.StandardClaims{
-			ExpiresAt: jwt.At(time.Now().Add(time.Minute * 50)), // 过期时间  test 5分支
+			ExpiresAt: jwt.At(time.Now().Add(TokenExpireDuration)), // 过期时间  test 5分钟
 			Issuer:    "admin",                                 // 签发人
 		},
 	}

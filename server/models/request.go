@@ -3,7 +3,7 @@ package models
 
 // 登录请求接口
 type UserLoginStruct struct {
-	Username string `json:"username" form:"username" must:"true"`
+	UserName string `json:"username" form:"username" must:"true"`
 	Password string `json:"password" form:"password" must:"true"`
 }
 

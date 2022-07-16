@@ -32,18 +32,18 @@ services:
       - "/Users/linchengzhe/redisData/conf:/etc/redis/redis.conf"
 
   # golang gin 后台
-  my-gin:
-    restart: always
-    depends_on:
-      - my-mysql
-      - my-redis
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    networks:
-      - monito
-    ports:
-      - "80:80"
+#  my-gin:
+#    restart: always
+#    depends_on:
+#      - my-mysql
+#      - my-redis
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    networks:
+#      - monito
+#    ports:
+#      - "80:80"
 
 
 
