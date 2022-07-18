@@ -1,0 +1,17 @@
+// 全局less mixin
+
+// flex 布局mixin函数示例
+.flex(@dir:row,@ali:center,@jus:center){
+  display: flex;
+  flex-direction: @dir;
+  align-items: @ali;
+  justify-content: @jus;
+}
+// 全局使用方法
+/*
+  1、在less顶部引入 @import "~@less";
+  2、在需要的地方调用mixin方法
+  {
+    .flex() // 可选传参数, 不传就用 _ 代替
+  }
+*/

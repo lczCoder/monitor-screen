@@ -1,0 +1,144 @@
+.home-warp {
+  position: absolute;
+  top: 18%;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 999999;
+}
+
+.home-btn {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 45px 25px 0;
+  min-width: 150px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    background-color: rgb(28, 31, 30);
+    transition: 0.3s ease-out;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+
+    &:hover {
+      width: 0%;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    transition: 0.3s;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(28, 31, 30);
+    transition: 0.2s 0.1s;
+
+    &:hover {
+      color: rgb(28, 31, 30);
+      transition: 0.2s 0.1s;
+    }
+  }
+}
+
+.home-btn:hover::before {
+  width: 0%;
+}
+
+
+// 打字机效果
+.typing.animate {
+  margin-bottom: 30px;
+  width: 21ch;
+  border-right: 0.1em solid black;
+  font-family: monospace;
+  font-size: 2em;
+  animation: type 2.5s steps(20), writer 1s infinite alternate,
+    delete 0.5s steps(5) 2.5s, type2 1s steps(4) 3s forwards,
+    type3 3s steps(22, end) 6s forwards;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.typing.animate::before {
+  content: "Hello, I'is WebTrace";
+  font-size: 1em;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  animation: type2 1s steps(4) 3s forwards, type3 2s steps(22, end) 6s forwards;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 16ch;
+  }
+}
+
+@keyframes type2 {
+  from {
+    width: 16ch;
+    content: "Hello, It's WebTrace ";
+  }
+
+  to {
+    width: 18ch;
+    content: "Hello, It's WebTrace ";
+  }
+}
+
+@keyframes type3 {
+  from {
+    width: 18ch;
+    content: "Hello, It's WebTrace  Get Started!";
+  }
+
+  to {
+    width: 29ch;
+    content: "Hello, It's WebTrace  Get Started!";
+  }
+}
+
+@keyframes writer {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes delete {
+  from {
+    width: 16ch;
+  }
+
+  to {
+    width: 14ch;
+  }
+}

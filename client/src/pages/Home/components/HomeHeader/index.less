@@ -1,0 +1,53 @@
+.tab-box {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  right: 0;
+  min-width: 1000px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 100px;
+
+  .tab-item {
+    display: inline-block;
+    width: auto;
+    height: 40px;
+    text-align: center;
+    background-color: transparent;
+    text-align: center;
+    line-height: 38px;
+    margin: 0 20px;
+    cursor: pointer;
+
+
+    span {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 5px 10px;
+      cursor: pointer;
+      &:hover{
+        text-shadow:
+        0 1px 0 hsl(174, 5%, 80%),
+        0 2px 0 hsl(174, 5%, 75%),
+        0 3px 0 hsl(174, 5%, 70%),
+        0 4px 0 hsl(174, 5%, 66%),
+        0 5px 0 hsl(174, 5%, 64%),
+        0 6px 0 hsl(174, 5%, 62%),
+        0 7px 0 hsl(174, 5%, 61%),
+        0 8px 0 hsl(174, 5%, 60%),
+        0 0 5px rgba(0, 0, 0, .05),
+        0 1px 3px rgba(0, 0, 0, .2),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .2),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .3);
+    }
+      }
+  }
+  img{
+    cursor:pointer;
+  }
+}
