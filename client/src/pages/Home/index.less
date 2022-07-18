@@ -78,19 +78,17 @@
   font-family: monospace;
   font-size: 2em;
   animation: type 2.5s steps(20), writer 1s infinite alternate,
-    delete 0.5s steps(5) 2.5s, type2 1s steps(4) 3s forwards,
-    type3 3s steps(22, end) 6s forwards;
+    delete 0.5s steps(5) 2.5s, type2 0.5s steps(4) 3s forwards;
   overflow: hidden;
   white-space: nowrap;
-  cursor: pointer;
 }
 
 .typing.animate::before {
   content: "Hello, I'is WebTrace";
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: bold;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  animation: type2 1s steps(4) 3s forwards, type3 2s steps(22, end) 6s forwards;
+  animation: type2 0.5s steps(4) 3s forwards;
 }
 
 @keyframes type {
@@ -105,27 +103,16 @@
 
 @keyframes type2 {
   from {
-    width: 16ch;
-    content: "Hello, It's WebTrace ";
+    width: 12ch;
+    content: "Hello, It's WebTrace !";
   }
 
   to {
-    width: 18ch;
-    content: "Hello, It's WebTrace ";
+    width:27ch;
+    content: "Hello, It's WebTrace !";
   }
 }
 
-@keyframes type3 {
-  from {
-    width: 18ch;
-    content: "Hello, It's WebTrace  Get Started!";
-  }
-
-  to {
-    width: 29ch;
-    content: "Hello, It's WebTrace  Get Started!";
-  }
-}
 
 @keyframes writer {
   50% {
@@ -139,6 +126,6 @@
   }
 
   to {
-    width: 14ch;
+    width: 12ch;
   }
 }
