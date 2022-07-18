@@ -17,6 +17,7 @@ const Login = () => {
   }
   return (
     <>
+    <div className="login-warp">
       <div className="main">
         <div className={cs("container a-container", { 'is-txl': login })} id="a-container">
           <form className="form" id="a-form" method="" action="">
@@ -67,6 +68,7 @@ const Login = () => {
             </button>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
