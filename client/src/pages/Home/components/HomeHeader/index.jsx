@@ -1,10 +1,11 @@
 import sty from './index.less';
 import wechat from '@/assets/wechat.png';
+import QrCode from '@/assets/qrcode.png';
 import { history } from 'umi';
 import { Popover } from 'antd';
 const tabList = [
   { tab: '首页', route: '/home' },
-  { tab: '系统示例', route: '/demo/login' },
+  { tab: '系统演示', route: '/demo/login' },
   { tab: '更新日志', route: '' },
   { tab: '部署文档', route: '' },
   { tab: '设计思路', route: '' },
@@ -12,8 +13,8 @@ const tabList = [
 
 const content = (
   <img
-    width={150}
-    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F03%2F20200503120801_wNjsi.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1660740537&t=2b150b4b0136f09c84e86637edfd741f"
+    width={170}
+    src={QrCode}
     alt=""
   />
 );

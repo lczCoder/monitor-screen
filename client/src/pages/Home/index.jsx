@@ -11,7 +11,7 @@ const Home = () => {
     let timer1 = setTimeout(() => {
       setLoad(false)
       clearTimeout(timer1)
-    }, 3000)
+    }, 1500)
   }, [])
 
 
