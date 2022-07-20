@@ -63,12 +63,11 @@ axios.interceptors.response.use(
 // 响应数据处理
 function processingData(response) {
   const result = _.get(response, 'data', null);
-  console.log('result', result);
   if (!result) {
     return null;
   }
   errMsgToast(result.msg || '未知错误', _.get(result, 'statusCode') === 0 ?'success':'warning');
-  return result.data;
+  return result;
 }
 
 // url 是请求的服务器地址

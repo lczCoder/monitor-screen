@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
-import {connect} from 'dva'
+import { connect } from 'dva';
+import EmailVerify from './components/EmailVerify'
 import cs from 'classnames';
-import $http from '@/utils/request';
+import _ from 'lodash'
+import { Toast } from '@douyinfe/semi-ui';
 import './index.less';
 
 // 登录页面
-const Login = ({dispatch}) => {
+const Login = ({ dispatch }) => {
   const [login, setLogin] = useState(true); // 登录 or 注册
   const [move, setMove] = useState(false); // 动画效果
   const [user, setUser] = useState(''); // 用户名
   const [password, setPassword] = useState(''); // 密码
   const [nick, setNick] = useState(''); // 昵称
   const [email, setEmail] = useState(''); // 邮箱
-  const [code, setCode] = useState(''); // 邮箱验证码
+  const [codeModal, setCodeModal] = useState(false); // 邮箱验证码
+
   const LoginFrom = [
     { type: 'text', placeholder: '账号：', value: user, fn: setUser },
     {
@@ -27,14 +30,7 @@ const Login = ({dispatch}) => {
     { type: 'text', placeholder: '昵称：', value: nick, fn: setNick },
     { type: 'text', placeholder: '邮箱：', value: email, fn: setEmail },
   ];
-  useEffect(() => {
-    // dispatch({
-    //   type:'Login/fetchRouterList'
-    // })
-    $http.get('/view/home').then(res=>{
-      console.log('res',res);
-    })
-  },[])
+
   // 注册登陆状态切换
   const switchLogin = (check) => {
     setLogin(check);
@@ -45,7 +41,6 @@ const Login = ({dispatch}) => {
       clearTimeout(timer);
     }, 1500);
   };
-
   // 重置登录注册信息
   const resetForm = () => {
     setUser('');
@@ -53,9 +48,58 @@ const Login = ({dispatch}) => {
     setNick('');
     setEmail('');
   };
+  // 检验信息规范
+  const checkRule = (type) => {
+    if (!user || !password || !(type || email) || !(type || nick)) {
+      Toast.warning('请填写完整的信息')
+      return
+    }
+    const userReg = /^[a-zA-Z0-9]{4,16}$/
+    const passReg = /^.*(?=.{6,16})(((?=.*\d)(?=.*[a-z]))|(?=.*[!@#$%^&*? ])).*$/
+    const emailReg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    if (!userReg.test(user)) {
+      Toast.warning('用户名不符合规范')
+      return
+    }
+    if (!passReg.test(password)) {
+      Toast.warning('密码不符合规范')
+      return
+    }
+    if (!type && !emailReg.test(email)) {
+      Toast.warning('邮箱不符合规范')
+      return
+    }
+    loginOrRegiste(type)
+  }
+  // 注册or登录
+  const loginOrRegiste = (type) => {
+    type ?
+      dispatch({
+        type: `User/_loginUser`,
+        payload: {
+          username: user,
+          password: password,
+        }
+      }) : dispatch({
+        type: `User/_registeUser`,
+        payload: {
+          username: user,
+          password: password,
+          nickname: nick || undefined,
+          email: email || undefined
+        }
+      }).then(res=>{
+        res ===0 && setCodeModal(true)
+      })
+
+  }
   return (
     <>
+
       <div className="login-warp">
+        {
+          codeModal && <EmailVerify info={{email,user,password}} email={email} onClose={() => setCodeModal(false)} />
+        }
         <div className="main">
           <div
             className={cs('container a-container', { 'is-txl': login })}
@@ -74,7 +118,12 @@ const Login = ({dispatch}) => {
                   onChange={({ target }) => item.fn(target.value)}
                 />
               ))}
-              <button className="form__button button submit">注册</button>
+              <button
+                className="form__button button submit"
+                onClick={_.throttle(() => checkRule(false), 3000)}
+              >
+                注册
+              </button>
             </div>
           </div>
           <div
@@ -99,7 +148,12 @@ const Login = ({dispatch}) => {
                 />
               ))}
               <a className="form__link">Forgot your password?</a>
-              <button className="form__button button submit">登录</button>
+              <button
+                className="form__button button submit"
+                onClick={_.throttle(() => checkRule(true), 3000)}
+              >
+                登录
+              </button>
             </div>
           </div>
           <div
@@ -149,6 +203,4 @@ const Login = ({dispatch}) => {
   );
 };
 
-export default connect(({Login})=>({
-
-})) (Login)
+export default connect(({ Login }) => ({}))(Login);

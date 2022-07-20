@@ -23,6 +23,7 @@ export default defineConfig({
   alias: {
     '@': path.resolve(__dirname, '../src'),
     '@@@': path.resolve(__dirname, '../src/components'),
+    '@serve':path.resolve(__dirname,'../src/server'),
     '@assets': path.resolve(__dirname, '../src/assets/images'),
     '@less': path.resolve(__dirname, '../src/theme/mixins.less'),
   },

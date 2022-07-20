@@ -2,7 +2,7 @@ import sty from './index.less';
 import wechat from '@/assets/wechat.png';
 import QrCode from '@/assets/qrcode.png';
 import { history } from 'umi';
-import { Popover } from 'antd';
+import { Tooltip, Space } from '@douyinfe/semi-ui';
 const tabList = [
   { tab: '首页', route: '/home' },
   { tab: '系统演示', route: '/demo/login' },
@@ -12,11 +12,13 @@ const tabList = [
 ];
 
 const content = (
-  <img
-    width={170}
-    src={QrCode}
-    alt=""
-  />
+  <Space vertical>
+    <img
+      width={170}
+      src={QrCode}
+    />
+    <p>欢迎添加微信进行交流</p>
+  </Space>
 );
 
 const HomeHeader = () => {
@@ -27,13 +29,9 @@ const HomeHeader = () => {
           <span onClick={() => history.push(item.route)}>{item.tab}</span>
         </div>
       ))}
-      <Popover
-        placement="bottom"
-        title={'作者微信,欢迎交流~'}
-        content={content}
-      >
+      <Tooltip arrowPointAtCenter={true} content={content}>
         <img width="35" src={wechat} alt="wechat" />
-      </Popover>
+      </Tooltip>
       <img
         width="100"
         src="https://img.shields.io/github/stars/lczCoder/monitor-screen?style=social"
