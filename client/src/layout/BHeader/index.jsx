@@ -11,7 +11,7 @@ const Bheader = () => {
       <Space>
         <h1>WebTrace</h1>
         {/* 搜索组件 */}
-        <ConSearch size={['300px', '35px']} placeholder="输入项目ID进行搜索" />
+        <ConSearch size={['500px', '35px']} placeholder="输入项目ID进行搜索" />
       </Space>
       <Space>
         <Badge count={5} type="warning">

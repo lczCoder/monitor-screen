@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout } from '@douyinfe/semi-ui';
+import { Layout, Space } from '@douyinfe/semi-ui';
 import logoImg from '@/assets/logo_20220719_uugai.com-1658201338741.png';
 const { Header, Sider, Content } = Layout;
 import { ConIconList } from '@@@/';
@@ -25,7 +25,16 @@ const BaseLayout = (props) => {
         <Header>
           <Bheader />
         </Header>
-        <Content>{props.children}</Content>
+        <Content>
+          <Space className={sty['main-content']}>
+            <Space className={sty['content-main']}>
+              123
+            </Space>
+            <Space className={sty['content-sider']}>
+              23123
+            </Space>
+          </Space>
+        </Content>
       </Layout>
     </Layout>
   );
