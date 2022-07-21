@@ -30,6 +30,7 @@ func UserLoginService(res models.UserLoginStruct)  models.ResponseData {
 			Msg: "登录成功",
 			Data: map[string]interface{}{
 				"token":token,
+				"bind":user.Status,
 			},
 		}
 	}
@@ -77,7 +78,6 @@ func UserRegistService(res models.UserRegisterStruct) (_response models.Response
 				StatusCode: 0,
 				Msg:        "注册成功",
 				Data: map[string]interface{}{
-					"token":    "qewqeq",
 					"username": res.UserName,
 					"nickname": res.NickName,
 				},

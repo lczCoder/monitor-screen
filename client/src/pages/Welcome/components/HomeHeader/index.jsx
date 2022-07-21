@@ -5,7 +5,7 @@ import { history } from 'umi';
 import { Tooltip, Space } from '@douyinfe/semi-ui';
 const tabList = [
   { tab: '首页', route: '/home' },
-  { tab: '系统演示', route: '/demo/login' },
+  { tab: '系统演示', route: '/login' },
   { tab: '更新日志', route: '' },
   { tab: '部署文档', route: '' },
   { tab: '设计思路', route: '' },

@@ -3,7 +3,6 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"monitor/controllers/montioControllers"
-	"monitor/middleware"
 	"monitor/models"
 	"net/http"
 )
@@ -22,12 +21,16 @@ func MonitoRouterInit(r *gin.Engine){
 	}
 
 	// 首页相关路由
-	home := r.Group("/monito/view").Use(middleware.JwtAuth())
+	home := r.Group("/monito/view")
+	//.Use(middleware.JwtAuth())
 	{
 		home.GET("/home", func(ctx *gin.Context) {
 			ctx.JSON(http.StatusOK,models.ResponseData{
 				StatusCode: 0,
-				Msg: "首页数据",
+				Msg: "ok",
+				Data: map[string]interface{}{
+					"weq":123,
+				},
 			})
 		})
 	}
