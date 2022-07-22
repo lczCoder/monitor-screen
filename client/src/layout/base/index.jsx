@@ -12,12 +12,12 @@ const BaseLayout = (props) => {
     <Layout className={sty['home-container']}>
       <Sider className={sty['home-sider']}>
         <div className={sty['sider-box']}>
-          <img
+          {/* <img
             className={sty['logo-img']}
             width="80px"
             src={logoImg}
             alt="logo"
-          />
+          /> */}
           <ConIconList margin="20px 0" space="120px" vertical size="36px" />
         </div>
       </Sider>
@@ -28,10 +28,7 @@ const BaseLayout = (props) => {
         <Content>
           <Space className={sty['main-content']}>
             <Space className={sty['content-main']}>
-              123
-            </Space>
-            <Space className={sty['content-sider']}>
-              23123
+              {props.children}
             </Space>
           </Space>
         </Content>

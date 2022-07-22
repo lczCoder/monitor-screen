@@ -2,16 +2,16 @@ import React from 'react';
 import { connect } from 'dva';
 import { Space, Input, Avatar, Badge } from '@douyinfe/semi-ui';
 import { IconBellStroked } from '@douyinfe/semi-icons';
-import { ConSearch } from '@@@/';
+import LogoImg  from '@/assets/logo_20220719_uugai.com_1658201368202.png'
 import sty from './index.less';
 
 const Bheader = () => {
   return (
     <div className={sty['bheader-container']}>
       <Space>
-        <h1>WebTrace</h1>
-        {/* 搜索组件 */}
-        <ConSearch size={['500px', '35px']} placeholder="输入项目ID进行搜索" />
+        {/* <h1>WebTrace</h1> */}
+        <img width="300" src={LogoImg} alt="" />
+
       </Space>
       <Space>
         <Badge count={5} type="warning">

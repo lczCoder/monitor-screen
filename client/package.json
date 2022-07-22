@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/charts": "^1.4.2",
     "@ant-design/pro-layout": "^6.5.0",
     "@douyinfe/semi-ui": "^2.15.1",
     "axios": "^0.27.2",

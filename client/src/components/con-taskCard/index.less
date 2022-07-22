@@ -1,0 +1,89 @@
+.card {
+  width:300px;
+  max-width: 340px;
+  height:400px;
+  margin: 20px 50px 20px 0;
+  // margin-left: 100px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 0 0 0 8px #e9ebec6f;
+}
+
+.card-main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-subtitle {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-buttons {
+  display: flex;
+  background-color: #fff;
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  button {
+    flex: 1 1 auto;
+    user-select: none;
+    background: 0;
+    font-size: 13px;
+    border: 0;
+    padding: 15px 5px;
+    cursor: pointer;
+    color: #5c5c6d;
+    transition: 0.3s;
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    outline: 0;
+    border-bottom: 3px solid transparent;
+
+    &.is-active,&:hover{
+      color: #2b2c48;
+      border-bottom: 3px solid #8a84ff;
+      background: linear-gradient(
+        to bottom,
+        rgba(127, 199, 231, 0) 0%,
+        rgba(207, 204, 255, 0.2) 44%,
+        rgba(211, 226, 255, 0.4) 100%
+      );
+    }
+  }
+}
+
+.card-section {
+  display: none;
+  &.is-active {
+    display: block;
+    animation: fadeIn 0.6s both;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translatey(40px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+

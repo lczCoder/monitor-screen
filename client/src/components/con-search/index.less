@@ -1,13 +1,12 @@
-
 @import "~@less";
 
 .search-box {
   position: relative;
   height: 45px;
   background: #fff;
-  box-shadow:  7px 7px 12px #aeb9ba,
-  -7px -7px 12px #ffffff;
-  border-radius:15px;
+  box-shadow: 7px 7px 12px #aeb9ba,
+    -7px -7px 12px #ffffff;
+  border-radius: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,7 +15,7 @@
   .input-main {
     display: inline-block;
     width: 315px;
-    height:100%;
+    height: 100%;
     padding: 10px 0 10px 35px;
     font-family: "Open Sans", sans;
     font-weight: bold;
@@ -40,8 +39,6 @@
       color: #377D6A;
       text-indent: 0;
       background: #fff;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
 
       &::-webkit-input-placeholder {
         color: #aaa;
@@ -49,31 +46,30 @@
 
       +.label {
         border-radius: 15px;
-        animation: swing 1.4s 1 ease-in-out;
+        animation: swing 1s 1 ease-in-out;
         transform: rotate(82deg);
       }
     }
-
-
   }
 
   .label {
     .flex();
     position: absolute;
-    height:100%;
+    height: 100%;
     color: #fff;
     top: 0;
     left: 0;
     padding: 10px 15px;
     text-align: center;
-    line-height:100%;
+    line-height: 100%;
     text-shadow: 0 1px 0 rgba(19, 74, 70, .4);
     background: #7AB893;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     transform-origin: 2px 2px;
     transform: rotate(0);
-    animation: swing-back .4s 1 ease-in-out;
+    transition: all .5s ease-in-out;
+    // animation: swing-back .4s 1 ease-in-out;
   }
 
   @keyframes swing {
@@ -113,7 +109,7 @@
   }
 }
 
-.search-icon{
+.search-icon {
   color: #ccc;
   margin-left: 10px;
   cursor: pointer;
