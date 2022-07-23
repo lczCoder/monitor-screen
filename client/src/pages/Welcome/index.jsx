@@ -19,9 +19,9 @@ const Home = () => {
   return (
     <>
       <HomeHeader />
-      <div className="home-warp">
+      <div className="welcome-warp">
         <div style={{display:load?'none':'block'}} className="typing animate"></div>
-        <button className="home-btn" onClick={()=>history.push('/demo/home')}>
+        <button className="welcome-btn" onClick={()=>history.push('/demo/home')}>
           <span>开始体验</span>
         </button>
       </div>

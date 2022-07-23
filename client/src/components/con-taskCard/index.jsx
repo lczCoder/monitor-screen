@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import cs from 'classnames';
 import './index.less';
-import { Line, Pie } from '@ant-design/plots';
+import { Line } from '@ant-design/plots';
+import { Empty,Switch } from '@douyinfe/semi-ui';
+import {IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations'
 import sty from './index.less'
-const ConTaskCard = () => {
+
+const ConTaskCard = (props) => {
+  const { open = true } = props
   const [activeIdx, setIdx] = useState(0);
+  const [isOpen,setIsOpen] = useState(open)
   const [data, setData] = useState([
     {
       "name": "China",
@@ -484,35 +489,6 @@ const ConTaskCard = () => {
     }
   ]
   );
-  const [data1, setData1] = useState(
-    [
-      {
-        type: '分类一',
-        value: 27,
-      },
-      {
-        type: '分类二',
-        value: 25,
-      },
-      {
-        type: '分类三',
-        value: 18,
-      },
-      {
-        type: '分类四',
-        value: 15,
-      },
-      {
-        type: '分类五',
-        value: 10,
-      },
-      {
-        type: '其他',
-        value: 5,
-      },
-    ]
-  )
-
   const config = {
     data,
     xField: 'year',
@@ -535,91 +511,60 @@ const ConTaskCard = () => {
       },
     },
   };
-  const config1 = {
-    appendPadding: 10,
-    data: data1,
-    angleField: 'value',
-    colorField: 'type',
-    radius: 1,
-    innerRadius: 0.6,
-    label: {
-      type: 'inner',
-      offset: '-50%',
-      content: '{value}',
-      style: {
-        textAlign: 'center',
-        fontSize: 14,
-      },
-    },
-    interactions: [
-      {
-        type: 'element-selected',
-      },
-      {
-        type: 'element-active',
-      },
-    ],
-    state: {
-      active: {
-        animate: { duration: 200, easing: 'easeLinear' },
-        style: {
-          stroke: '#ccc',
-        },
-      },
-    },
-    statistic: {
-      title: false,
-      content: {
-        style: {
-          whiteSpace: 'pre-wrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          fontSize: '12px'
-        },
-        content: '错误类型',
-      },
-    },
-  };
+
   const tabList = [
     { tab: '第一页', key: '', component: <Line style={{ width: '90%', height: '310px' }} {...config} /> },
-    { tab: '第二页', key: '', component: <Pie {...config1} /> },
+    { tab: '第二页', key: '', component: '内容2' },
     { tab: '第三页', key: '', component: '内容3' },
   ];
   return (
-      <div className="card">
-        {/* 头部信息 */}
-        <div className="card-header"></div>
-        {/* 内容区域 */}
-        <div className="card-main">
-          {tabList.map((item, idx) => (
-            <div
-              key={idx}
-              className={cs([
-                'card-section',
-                { 'is-active': idx == activeIdx },
-              ])}
-            >
-              <div className="card-content">
-                <div className="card-subtitle">
-                  {item.component}
+    <div className='task-card'>
+      {/* 卡片信息栏 */}
+    <div className='card-heard'>
+        项目名称(ID)
+        <Switch checked={isOpen}  checkedText="｜" uncheckedText="〇" onChange={(check)=>setIsOpen(check)}/>
+    </div>
+    <div className="card-box">
+      {/* 内容区域 */}
+      {
+        !isOpen ?
+          <Empty
+            image={<IllustrationNoAccess style={{ width: 150, height: 150 }} />}
+            darkModeImage={<IllustrationNoAccessDark style={{ width: 150, height: 150 }} />}
+            description={'项目监控关闭中'}
+          /> :
+          <div className="card-main">
+            {tabList.map((item, idx) => (
+              <div
+                key={idx}
+                className={cs([
+                  'card-section',
+                  { 'is-active': idx == activeIdx },
+                ])}
+              >
+                <div className="card-content">
+                  <div className="card-subtitle">
+                    {item.component}
 
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          <div className="card-buttons">
-            {tabList.map((item, idx) => (
-              <button
-                key={idx}
-                className={cs({ 'is-active': idx == activeIdx })}
-                onClick={_.throttle(() => setIdx(idx), 3000)}
-              >
-                {item.tab}
-              </button>
             ))}
+            <div className="card-buttons">
+              {tabList.map((item, idx) => (
+                <button
+                  key={idx}
+                  className={cs({ 'is-active': idx == activeIdx })}
+                  onClick={_.throttle(() => setIdx(idx), 3000)}
+                >
+                  {item.tab}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+      }
+    </div>
+    </div>
   );
 };
 
