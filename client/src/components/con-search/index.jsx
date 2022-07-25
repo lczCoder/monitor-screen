@@ -6,7 +6,7 @@ const ConSearch = (props) => {
   const { placeholder = '', label = '搜索', size = ['315px', '50px'] } = props;
   return (
     <>
-      <div style={{ height: size[1] }} className={sty['search-box']}>
+      <div style={{width:size[0], height: size[1] }} className={sty['search-box']}>
         <input
           style={{ width: size[0] }}
           className={sty['input-main']}

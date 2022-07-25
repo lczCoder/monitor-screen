@@ -3,13 +3,23 @@
 .home-warp {
   width: 100%;
   height: 100%;
-  .flex(column,flex-start,center);
+  .flex(column, center, center);
   overflow-x: auto;
-  padding-left:50px;
-}
+  padding: 0 20px;
+  margin-top: 5px;
+  overflow-y: hidden;
 
-.task-card-box{
-  width: 100%;
-  margin-top:50px;
-  .flex(row,center,flex-start);
+  .home-search {
+    width: 100%;
+    .flex();
+  }
+
+  .task-card-box {
+    position: relative;
+    width: 100%;
+    margin-top: 2%;
+    .flex(row, center, flex-start);
+    padding: 0 20px;
+    overflow-y: hidden;
+  }
 }

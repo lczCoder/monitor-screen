@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'dva'
-import { ConSearch } from '@@@/';
-import { ConTaskCard } from '@@@/'
-
+import { ConSearch, ConTaskCard } from '@@@/';
+import sty from './index.less'
 import './index.less'
 
 const Home = (props) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3
-  };
   return (
     <>
-      <div className='home-warp'>
+      <div className={sty['home-warp']}>
         {/* 搜索组件 */}
-        <ConSearch size={['400px', '35px']} placeholder="输入项目ID进行搜索" />
-        <div className='task-card-box'>
+        <div className={sty['home-search']}>
+          <ConSearch size={['600px', '40px']} placeholder="输入项目ID进行搜索" />
+        </div>
+        <div className={sty['task-card-box']}>
           <ConTaskCard></ConTaskCard>
           <ConTaskCard></ConTaskCard>
           <ConTaskCard></ConTaskCard>

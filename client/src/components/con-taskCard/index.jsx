@@ -3,14 +3,14 @@ import _ from 'lodash';
 import cs from 'classnames';
 import './index.less';
 import { Line } from '@ant-design/plots';
-import { Empty,Switch } from '@douyinfe/semi-ui';
-import {IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations'
+import { Empty, Switch } from '@douyinfe/semi-ui';
+import { IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations'
 import sty from './index.less'
 
 const ConTaskCard = (props) => {
   const { open = true } = props
   const [activeIdx, setIdx] = useState(0);
-  const [isOpen,setIsOpen] = useState(open)
+  const [isOpen, setIsOpen] = useState(open)
   const [data, setData] = useState([
     {
       "name": "China",
@@ -520,50 +520,51 @@ const ConTaskCard = (props) => {
   return (
     <div className='task-card'>
       {/* 卡片信息栏 */}
-    <div className='card-heard'>
+      <div className='card-heard'>
         项目名称(ID)
-        <Switch checked={isOpen}  checkedText="｜" uncheckedText="〇" onChange={(check)=>setIsOpen(check)}/>
-    </div>
-    <div className="card-box">
-      {/* 内容区域 */}
-      {
-        !isOpen ?
-          <Empty
-            image={<IllustrationNoAccess style={{ width: 150, height: 150 }} />}
-            darkModeImage={<IllustrationNoAccessDark style={{ width: 150, height: 150 }} />}
-            description={'项目监控关闭中'}
-          /> :
-          <div className="card-main">
-            {tabList.map((item, idx) => (
-              <div
-                key={idx}
-                className={cs([
-                  'card-section',
-                  { 'is-active': idx == activeIdx },
-                ])}
-              >
-                <div className="card-content">
-                  <div className="card-subtitle">
-                    {item.component}
+        <Switch checked={isOpen} checkedText="｜" uncheckedText="〇" onChange={(check) => setIsOpen(check)} />
+      </div>
+      <div className="card-box">
+        {/* 内容区域 */}
+        {
+          !isOpen ?
+            <Empty
+            style={{fontWeight:'bold'}}
+              image={<IllustrationNoAccess style={{ width: 150, height: 150 }} />}
+              darkModeImage={<IllustrationNoAccessDark style={{ width: 150, height: 150 }} />}
+              description={'项目监控被关闭啦'}
+            /> :
+            <div className="card-main">
+              {tabList.map((item, idx) => (
+                <div
+                  key={idx}
+                  className={cs([
+                    'card-section',
+                    { 'is-active': idx == activeIdx },
+                  ])}
+                >
+                  <div className="card-content">
+                    <div className="card-subtitle">
+                      {item.component}
 
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-            <div className="card-buttons">
-              {tabList.map((item, idx) => (
-                <button
-                  key={idx}
-                  className={cs({ 'is-active': idx == activeIdx })}
-                  onClick={_.throttle(() => setIdx(idx), 3000)}
-                >
-                  {item.tab}
-                </button>
               ))}
+              <div className="card-buttons">
+                {tabList.map((item, idx) => (
+                  <button
+                    key={idx}
+                    className={cs({ 'is-active': idx == activeIdx })}
+                    onClick={_.throttle(() => setIdx(idx), 3000)}
+                  >
+                    {item.tab}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-      }
-    </div>
+        }
+      </div>
     </div>
   );
 };

@@ -1,25 +1,29 @@
 @import "~@less";
 
 .icon-list-warp {
-  width: 100%;
-
   .icon-box {
     padding: 7px 7px;
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+
     .flex-center();
 
     &:hover {
-      background-color: #000;
       cursor: pointer;
     }
 
     &:hover .icon-item {
-      color: #fff;
+      width: 60px;
     }
 
     .icon-item {
-      color: #000;
-      
+      transition: .5s;
+    }
+
+    .icon-active {
+      width:60px;
+      border-radius: 20%;
+      border: 3px solid #ccc;
     }
   }
 }

@@ -1,17 +1,23 @@
 @import "~@less";
 
 .task-card{
+  height: 100%;
   margin: 20px 50px 20px 0;
+  .flex(column,flex-start,center);
 }
 
 .card-heard{
   .flex(_,_,space-between);
+  height:20px;
+  width:100%;
 }
 
 .card-box {
   width:380px;
   min-width: 350px;
-  height:400px;
+  height:360px;
+  min-height: 400px;
+  max-height: 500px;
   margin-top: 20px;
   overflow-y: auto;
   position: relative;

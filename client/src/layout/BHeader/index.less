@@ -1,23 +1,27 @@
 @import "~@less";
 
 .bheader-container {
-  height: 80px;
+  padding:0 3%;
   width: 100%;
+  height: 100%;
   .flex(row, center, space-between);
-  h1{
-    font-size:24px;
-    font-family:'Times New Roman', Times, serif;
-    font-weight:bolder;
+
+  h1 {
+    font-size: 24px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
     margin-right: 20px;
   }
-  .notice{
-    font-size:24px;
-    margin-right:-5px;
+
+  .notice {
+    font-size: 24px;
+    margin-right: -5px;
   }
-  .user-avatar{
+
+  .user-avatar {
     border-right: 3px solid #ccc;
     border-bottom: 3px solid #ccc;
-    margin-left:20px;
+    margin-left: 20px;
   }
 }
 
@@ -26,14 +30,14 @@
   width: 500px;
   border-radius: 15px;
   outline: none;
-  box-shadow:  5px 5px 10px #b6b9be,
-               -5px -5px 10px #ffffff;
+  box-shadow: 5px 5px 10px #b6b9be,
+    -5px -5px 10px #ffffff;
 
   &:hover {
     background-color: #fff;
   }
-  &:focus{
+
+  &:focus {
     outline: none;
   }
 }
-
