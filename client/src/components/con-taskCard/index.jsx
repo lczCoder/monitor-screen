@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,memo } from 'react';
 import _ from 'lodash';
 import cs from 'classnames';
 import './index.less';
@@ -569,4 +569,4 @@ const ConTaskCard = (props) => {
   );
 };
 
-export default ConTaskCard;
+export default memo(ConTaskCard);

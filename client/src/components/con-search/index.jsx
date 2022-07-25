@@ -14,8 +14,9 @@ const ConSearch = (props) => {
           placeholder={placeholder}
         />
         <p className={sty['label']}>{label}</p>
-        <IconSearch className={sty['search-icon']} />
+        <img width='25px' className={sty['search-icon']} src="https://wandu-fe.oss-cn-beijing.aliyuncs.com/xxxx/find.png" alt="" />
       </div>
+      <img width='35px' className={sty['list-icon']} src="https://wandu-fe.oss-cn-beijing.aliyuncs.com/xxxx/more.png" alt="" />
     </>
   );
 };
