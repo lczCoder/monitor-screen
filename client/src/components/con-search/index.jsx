@@ -16,7 +16,7 @@ const ConSearch = (props) => {
         <p className={sty['label']}>{label}</p>
         <img width='25px' className={sty['search-icon']} src="https://wandu-fe.oss-cn-beijing.aliyuncs.com/xxxx/find.png" alt="" />
       </div>
-      <img width='35px' className={sty['list-icon']} src="https://wandu-fe.oss-cn-beijing.aliyuncs.com/xxxx/more.png" alt="" />
+      <img width='30px' className={sty['list-icon']} src="https://wandu-fe.oss-cn-beijing.aliyuncs.com/xxxx/more.png" alt="" />
     </>
   );
 };

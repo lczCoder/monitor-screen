@@ -1,9 +1,9 @@
-import React, { useState, useEffect,memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import _ from 'lodash';
 import cs from 'classnames';
 import './index.less';
 import { Line } from '@ant-design/plots';
-import { Empty, Switch } from '@douyinfe/semi-ui';
+import { Empty, Switch, Tooltip } from '@douyinfe/semi-ui';
 import { IllustrationNoAccess, IllustrationNoAccessDark } from '@douyinfe/semi-illustrations'
 import sty from './index.less'
 
@@ -521,15 +521,20 @@ const ConTaskCard = (props) => {
     <div className='task-card'>
       {/* 卡片信息栏 */}
       <div className='card-heard'>
-        项目名称(ID)
-        <Switch checked={isOpen} checkedText="｜" uncheckedText="〇" onChange={(check) => setIsOpen(check)} />
+        <div className='state-area'>
+          <p>项目名称目名称(ID)</p>
+          <Switch checked={isOpen} checkedText="｜" uncheckedText="〇" onChange={(check) => setIsOpen(check)} />
+        </div>
+        <Tooltip content='查看更多大屏数据' position='topRight'>
+          <img width='20px' src="https://wandu-fe.oss-cn-beijing.aliyuncs.com/xxxx/detail3.png" alt="" />
+        </Tooltip>
       </div>
       <div className="card-box">
         {/* 内容区域 */}
         {
           !isOpen ?
             <Empty
-            style={{fontWeight:'bold'}}
+              style={{ fontWeight: 'bold' }}
               image={<IllustrationNoAccess style={{ width: 150, height: 150 }} />}
               darkModeImage={<IllustrationNoAccessDark style={{ width: 150, height: 150 }} />}
               description={'项目监控被关闭啦'}

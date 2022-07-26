@@ -1,21 +1,34 @@
 @import "~@less";
 
-.task-card{
+.task-card {
   height: 100%;
   margin: 20px 50px 20px 0;
-  .flex(column,flex-start,center);
+  .flex(column, flex-start, center);
 }
 
-.card-heard{
-  .flex(_,_,space-between);
-  height:20px;
-  width:100%;
+.card-heard {
+  .flex(_, _, space-between);
+  height: 20px;
+  width: 100%;
+
+  .state-area {
+    .flex(row);
+
+    p {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+
+  img {
+    cursor: pointer;
+  }
 }
 
 .card-box {
-  width:380px;
+  width: 380px;
   min-width: 350px;
-  height:360px;
+  height: 360px;
   min-height: 400px;
   max-height: 500px;
   margin-top: 20px;
@@ -55,6 +68,7 @@
   position: sticky;
   bottom: 0;
   left: 0;
+
   button {
     flex: 1 1 auto;
     user-select: none;
@@ -70,21 +84,21 @@
     outline: 0;
     border-bottom: 3px solid transparent;
 
-    &.is-active,&:hover{
+    &.is-active,
+    &:hover {
       color: #2b2c48;
       border-bottom: 3px solid #8a84ff;
-      background: linear-gradient(
-        to bottom,
-        rgba(127, 199, 231, 0) 0%,
-        rgba(207, 204, 255, 0.2) 44%,
-        rgba(211, 226, 255, 0.4) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(127, 199, 231, 0) 0%,
+          rgba(207, 204, 255, 0.2) 44%,
+          rgba(211, 226, 255, 0.4) 100%);
     }
   }
 }
 
 .card-section {
   display: none;
+
   &.is-active {
     display: block;
     animation: fadeIn 0.6s both;
@@ -96,10 +110,8 @@
     opacity: 0;
     transform: translatey(40px);
   }
+
   100% {
     opacity: 1;
   }
 }
-
-
-
