@@ -8,7 +8,7 @@
 */
 
 // flex 布局mixin函数示例
-.flex(@dir:row,@ali:center,@jus:center){
+.flex(@dir: row, @ali: center, @jus: center) {
   display: flex;
   flex-direction: @dir;
   align-items: @ali;
@@ -16,9 +16,22 @@
 }
 
 // 居中布局
-.flex-center(@dir:row){
+.flex-center(@dir: row) {
   display: flex;
-  flex-direction:@dir;
-  align-items:center;
-  justify-content:center;
+  flex-direction: @dir;
+  align-items: center;
+  justify-content: center;
+}
+
+// 边框
+.border(@size: 1px, @color: black) {
+  border: @size solid @color;
+}
+
+
+// 单行省略
+.ellipsis-one(){
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }

@@ -10,18 +10,19 @@
   .flex(_, _, space-between);
   height: 20px;
   width: 100%;
+  padding-left: 10px;
+
+  p {
+    font-weight: bold;
+  }
 
   .state-area {
     .flex(row);
 
-    p {
-      font-weight: bold;
-      margin-right: 5px;
+    img {
+      margin-right: 10px;
+      cursor: pointer;
     }
-  }
-
-  img {
-    cursor: pointer;
   }
 }
 
@@ -51,15 +52,21 @@
   flex-direction: column;
 }
 
-.card-subtitle {
-  font-weight: 700;
-  font-size: 13px;
-  margin-bottom: 8px;
+
+
+.card-section {
+  height: 100%;
+
+  .card-content {
+    height: 100%;
+    padding: 5px;
+
+    .card-subtitle {
+      height: 100%;
+    }
+  }
 }
 
-.card-content {
-  padding: 10px;
-}
 
 .card-buttons {
   display: flex;
@@ -78,9 +85,8 @@
     padding: 15px 5px;
     cursor: pointer;
     color: #5c5c6d;
-    transition: 0.3s;
-    font-family: "Jost", sans-serif;
-    font-weight: 500;
+    transition: 0.5s;
+    font-weight: bold;
     outline: 0;
     border-bottom: 3px solid transparent;
 

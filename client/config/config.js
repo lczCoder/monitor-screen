@@ -11,8 +11,8 @@ export default defineConfig({
     exclude: [],
   },
   hash: true,
-  // mfsu:{}, // 热更新优化
-  // webpack5:{},
+  mfsu:{}, // 热更新优化
+  webpack5:{},
   dynamicImport: false, // 按需加载，上线前需分包
   targets: {
     ie: 10,

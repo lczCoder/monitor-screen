@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'dva';
-import { ConSearch, ConTaskCard } from '@@@/';
+import { ConSearch } from '@@@/';
 import { Tooltip } from '@douyinfe/semi-ui';
 import CreateProject from './components/CreateProject';
+import TaskCard from './components/TaskCard'
 import sty from './index.less';
 
 const Home = (props) => {
@@ -20,10 +21,10 @@ const Home = (props) => {
         <div className={sty['task-card-box']}>
           {/* 项目卡片 */}
           <div className={sty['task-card-list']}>
-            <ConTaskCard></ConTaskCard>
-            <ConTaskCard></ConTaskCard>
-            <ConTaskCard></ConTaskCard>
-            <ConTaskCard open={false}></ConTaskCard>
+            <TaskCard></TaskCard>
+            <TaskCard></TaskCard>
+            <TaskCard></TaskCard>
+            <TaskCard open={false}></TaskCard>
           </div>
           {/* 创建项目 */}
           <div className={sty['task-card-add']}>
