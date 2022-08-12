@@ -23,7 +23,7 @@ export default {
       if (res.statusCode === 0) {
         window.localStorage.setItem('TOKEN', _.get(res, 'data.token'));
         yield put({ type: 'bindStatus', payload: _.get(res, 'data.bind') });
-        history.replace('/home');
+        history.replace('/demo/home');
       }
     },
     // 注册

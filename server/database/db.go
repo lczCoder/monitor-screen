@@ -24,12 +24,11 @@ func init() {
 			Colorful:                  true,        // 使用用彩色打印
 		},
 	)
-	dsn := "root:123456@tcp(127.0.0.1:3001)/monito?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:123456@tcp(my-mysql:3306)/monito?charset=utf8mb4&parseTime=True&loc=Local"
 	DB, ErrDB = gorm.Open(mysql.Open(dsn), &gorm.Config{Logger: newLogger})
 	if ErrDB != nil {
 		fmt.Println("mysql数据库连接失败",ErrDB)
 	} else {
 		fmt.Println("mysql数据库连接成功")
 	}
-
 }

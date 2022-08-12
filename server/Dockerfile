@@ -20,6 +20,6 @@ WORKDIR /DockerTest
 
 COPY --from=builder /go/src/DockerTest/main .
 
-EXPOSE 80:80
+EXPOSE 8888:8888
 
 ENTRYPOINT ["./main"]
