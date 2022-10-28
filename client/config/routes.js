@@ -3,7 +3,8 @@ export default [
     path: '/demo',
     component: '@/layout/base',
     routes:[
-      {path: '/demo/home', component: './Demo/Home',title:'首页'}
+      {path: '/demo/home', component: './Demo/Home',title:'首页'},
+      { path: '/demo/view',component: './Demo/Detail',title:'数据详情'},
     ]
   },
   {
